@@ -286,24 +286,24 @@ public class RemEvidenceBuilder {
         }
         
         // EvidencePolicyID
-        if (evidenceIssuerPolicyID == null) 
-            throw new IllegalStateException("Evidence Issuer Policy ID missing");
-        EvidenceIssuerPolicyIDType policyIDs = new EvidenceIssuerPolicyIDType();
-        policyIDs.getPolicyID().add(evidenceIssuerPolicyID);
-        r.setEvidenceIssuerPolicyID(policyIDs);
+        if (evidenceIssuerPolicyID != null) {
+            EvidenceIssuerPolicyIDType policyIDs = new EvidenceIssuerPolicyIDType();
+            policyIDs.getPolicyID().add(evidenceIssuerPolicyID);
+            r.setEvidenceIssuerPolicyID(policyIDs);
+        }
         
         // EvidenceIssuerDetails
-        if (evidenceIssuerDetails == null)
-            throw new IllegalStateException("Issuer details missing");
-        EntityNameType entityName = new EntityNameType();
-        entityName.getName().add(evidenceIssuerDetails);
-        NamePostalAddressType evidenceIssuerNameAndAddressType = new NamePostalAddressType();
-        evidenceIssuerNameAndAddressType.setEntityName(entityName);
-        NamesPostalAddressListType namesAndAddressList = new NamesPostalAddressListType();
-        namesAndAddressList.getNamePostalAddress().add(evidenceIssuerNameAndAddressType);
-        EntityDetailsType evidenceIssuerDetailsType = new EntityDetailsType();
-        evidenceIssuerDetailsType.setNamesPostalAddresses(namesAndAddressList);
-        r.setEvidenceIssuerDetails(evidenceIssuerDetailsType);
+        if (evidenceIssuerDetails == null) {
+            EntityNameType entityName = new EntityNameType();
+            entityName.getName().add(evidenceIssuerDetails);
+            NamePostalAddressType evidenceIssuerNameAndAddressType = new NamePostalAddressType();
+            evidenceIssuerNameAndAddressType.setEntityName(entityName);
+            NamesPostalAddressListType namesAndAddressList = new NamesPostalAddressListType();
+            namesAndAddressList.getNamePostalAddress().add(evidenceIssuerNameAndAddressType);
+            EntityDetailsType evidenceIssuerDetailsType = new EntityDetailsType();
+            evidenceIssuerDetailsType.setNamesPostalAddresses(namesAndAddressList);
+            r.setEvidenceIssuerDetails(evidenceIssuerDetailsType);
+        }
         
         // SenderDetails
         if (senderIdentifier != null) {
